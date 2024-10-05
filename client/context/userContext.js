@@ -241,4 +241,98 @@ export const UserContextProvider = ({ children }) => {
   };
 
   // admin routes
+  const getAllUsers = async () => {
+    setLoading(true);
+    try {
+      const res = await axios.get(`${serverUrl}/api/v1/admin/users`, {
+        withCredentials: true,
+      });
+
+      setAllUsers(res.data);
+      setLoading(false);
+    } catch (error) {
+      console.log("Error getting all users", error);
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
+  const deleteUser = async (id) => {
+    setLoading(true);
+    try {
+      const res = await axios.delete(`${serverUrl}/api/v1/admin/users/${id}`, {
+        withCredentials: true,
+      });
+
+      toast.success("User deleted successfully!");
+      setLoading(false);
+      await getAllUsers();
+    } catch (error) {
+      console.log("Error deleting the user", error);
+      toast.error(error.response.data.message);
+      setLoading(false);
+    }
+  };
+
+  // dynamic form handler
+  const handleUserInput = (name) => (e) => {
+    const value = e.target.value;
+
+    setUserState((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
+  useEffect(() => {
+    const loginStatusGetUser = async () => {
+      const isLoggedIn = await userLoginStatus();
+
+      if (isLoggedIn) {
+        await getUser();
+      }
+
+      loginStatusGetUser();
+    };
+  }, []);
+
+  useEffect(() => {
+    const isUserAdmin = async () => {
+      if (user.role === "admin") {
+        await getAllUsers();
+      }
+    };
+
+    isUserAdmin();
+  }, [user.role]);
+
+  return (
+    <UserContext.Provider
+      value={{
+        registerUser,
+        userState,
+        handleUserInput,
+        loginUser,
+        logoutUser,
+        userLoginStatus,
+        user,
+        updateUser,
+        emailVerification,
+        verifyUser,
+        forgotPasswordEmail,
+        resetPassword,
+        changePassword,
+        allUsers,
+        deleteUser,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUserContext = () => {
+  return useContext(UserContext);
 };
