@@ -28,11 +28,13 @@ app.use(errorHandler);
 
 //routes
 const routeFiles = fs.readdirSync("./src/routes");
+// console.log(routeFiles);
 
 routeFiles.forEach((file) => {
   // use dynamic import
   import(`./src/routes/${file}`)
     .then((route) => {
+      // console.log(route.default);
       app.use("/api/v1", route.default);
     })
     .catch((err) => {
