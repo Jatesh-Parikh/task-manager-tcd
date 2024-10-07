@@ -38,7 +38,7 @@ function Profile() {
             <p>Total Tasks:</p>
             <p className="pl-4 relative flex gap-2">
               <span
-                className="absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[50%]
+                className="absolute h-[70%] w-[0.2rem] left-[1px] -top-[7px] translate-y-[50%]
                 bg-purple-500 rounded-[5px]"
               ></span>
               <span className="font-medium text-4xl text-[#333]">
@@ -50,7 +50,7 @@ function Profile() {
             <p>In Progress:</p>
             <p className="pl-4 relative flex gap-2">
               <span
-                className="absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[50%]
+                className="absolute h-[70%] w-[0.2rem] left-[1px] -top-[7px] translate-y-[50%]
                 bg-purple-500 rounded-[5px]"
               ></span>
               <span className="font-medium text-4xl text-[#333]">
@@ -59,10 +59,10 @@ function Profile() {
             </p>
           </div>
           <div className="text-gray-400">
-            <p>Open Tasks:</p>
+            <p>Open:</p>
             <p className="pl-4 relative flex gap-2">
               <span
-                className="absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[50%]
+                className="absolute h-[70%] w-[0.2rem] left-[1px] -top-[7px] translate-y-[50%]
                 bg-purple-500 rounded-[5px]"
               ></span>
               <span className="font-medium text-4xl text-[#333]">
@@ -71,10 +71,10 @@ function Profile() {
             </p>
           </div>
           <div className="text-gray-400">
-            <p>Completed Tasks:</p>
+            <p>Completed:</p>
             <p className="pl-4 relative flex gap-2">
               <span
-                className="absolute h-[70%] w-[0.2rem] left-[1px] top-1/2 translate-y-[50%]
+                className="absolute h-[70%] w-[0.2rem] left-[1px] -top-[7px] translate-y-[50%]
                 bg-purple-500 rounded-[5px]"
               ></span>
               <span className="font-medium text-4xl text-[#333]">

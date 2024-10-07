@@ -50,7 +50,7 @@ function Header() {
           {userId ? "Add a new task" : "Login / Register"}
         </button>
 
-        <div className="flex-gap-4 items-center">
+        <div className="flex gap-4 items-center">
           <Link
             href="https://github.com/Jatesh-Parikh"
             passHref

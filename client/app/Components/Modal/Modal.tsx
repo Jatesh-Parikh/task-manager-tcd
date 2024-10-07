@@ -103,11 +103,11 @@ function Modal() {
               <select
                 className="bg-[#F9F9F9] p-2 rounded-md border cursor-pointer"
                 name="completed"
-                value={task.completed ? "true" : "false"}
+                value={task.completed ? "true" : ""}
                 onChange={(e) => handleInput("completed")(e)}
               >
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
+                <option value="true">Yes</option>
+                <option value="">No</option>
               </select>
             </div>
           </div>

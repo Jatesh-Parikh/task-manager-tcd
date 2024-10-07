@@ -52,7 +52,7 @@ function RegisterForm() {
             className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
           />
         </div>
-        <div className="flex flex-col">
+        <div className="relative flex flex-col">
           <label htmlFor="password" className="mb-1 text-[#999]">
             Password
           </label>

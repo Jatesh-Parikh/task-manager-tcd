@@ -1,20 +1,21 @@
 "use client";
 import { useTasks } from "@/context/taskContext";
 import useRedirect from "@/hooks/useUserRedirect";
-import Filters from "./Components/Filters/Filters";
-import TaskItem from "./Components/TaskItem/TaskItem";
 import { Task } from "@/utils/types";
-import { filteredTasks } from "@/utils/utilities";
+import { filteredTasks, overDueTasks } from "@/utils/utilities";
 import { useEffect } from "react";
+import Filters from "../Components/Filters/Filters";
+import TaskItem from "../Components/TaskItem/TaskItem";
 import { motion } from "framer-motion";
 import { container, item } from "@/utils/animations";
 
 export default function Home() {
   useRedirect("/login");
-
   const { tasks, openModalForAdd, priority, setPriority } = useTasks();
 
-  const filtered = filteredTasks(tasks, priority);
+  const overdue = overDueTasks(tasks);
+
+  const filtered = filteredTasks(overdue, priority);
 
   useEffect(() => {
     setPriority("all");
@@ -23,7 +24,7 @@ export default function Home() {
   return (
     <main className="m-6 h-full">
       <div className="flex justify-between">
-        <h1 className="text-2xl font-bold">All Tasks</h1>
+        <h1 className="text-2xl font-bold">Overdue Tasks</h1>
         <Filters />
       </div>
 
@@ -37,12 +38,13 @@ export default function Home() {
           <TaskItem key={i} task={task} />
         ))}
         <motion.button
-          className="h-[16rem] w-full py-2 rounded-md text-lg font-medium text-gray-500 border-dashed border-2 border-gray-400
-          hover:bg-gray-300 hover:border-none transition duration-200 ease-in-out"
-          onClick={openModalForAdd}
+          className="h-[16rem] w-full py-2 rounded-md text-lg font-medium text-gray-500 
+            border-dashed border-2 border-gray-400 hover:border-gray-300 hover:border-none
+            transition duration-200 ease-in-out"
           variants={item}
+          onClick={openModalForAdd}
         >
-          Add New Task
+          Add new Task
         </motion.button>
       </motion.div>
     </main>

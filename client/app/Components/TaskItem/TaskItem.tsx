@@ -27,7 +27,7 @@ function TaskItem({ task }: TaskItemProps) {
   const { getTask, deleteTask, modalMode, openModalForEdit } = useTasks();
   return (
     <motion.div
-      className="h-[16rem] px-4 py-3 flex flex-col gap-4 shadow-sm bg-[#f9f9f9] rounded-lg border-2 border-white"
+      className="h-[16rem] px-4 py-3 flex flex-col gap-4 shadow-sm bg-[#f9f9f9] rounded-lg border-2 border-white -z-1"
       variants={item}
     >
       <div>

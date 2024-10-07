@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 function LoginForm() {
   const { loginUser, userState, handleUserInput } = useUserContext();
-  const { email, password } = userState();
+  const { email, password } = userState;
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => setShowPassword(!showPassword);
@@ -38,7 +38,7 @@ function LoginForm() {
             className="px-4 py-3 border-[2px] rounded-md outline-[#2ECC71] text-gray-800"
           />
         </div>
-        <div className="mt-[1rem] flex flex-col">
+        <div className="mt-[1rem] flex flex-col relative">
           <label htmlFor="password" className="mb-1 text-[#999]">
             Password
           </label>

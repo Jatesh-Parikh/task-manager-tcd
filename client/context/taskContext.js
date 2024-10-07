@@ -1,11 +1,11 @@
 import axios from "axios";
-import React, { useEffect, createContext, useState } from "react";
+import React, { useEffect, createContext, useState, useContext } from "react";
 import { useUserContext } from "./userContext";
 import toast from "react-hot-toast";
 
 const TasksContext = createContext();
 
-const serverUrl = "";
+const serverUrl = "http://localhost:8000/api/v1";
 
 export const TasksProvider = ({ children }) => {
   const userId = useUserContext().user._id;
